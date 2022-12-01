@@ -1,1 +1,2 @@
-pub(crate) mod calorie_counting;
+pub(crate) mod part_1;
+pub(crate) mod part_2;

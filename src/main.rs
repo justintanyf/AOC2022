@@ -1,7 +1,6 @@
 mod day1;
-use crate::day1::calorie_counting;
+use crate::day1::part_2;
 
 fn main() {
-    calorie_counting::calorie_counting();
-    println!("Hello, world!");
+    part_2::part_2();
 }

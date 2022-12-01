@@ -1,26 +1,32 @@
-pub fn calorie_counting() -> i32 {
-    println!("FUCK YES");
+pub fn part_2() -> i32 {
     let split = INPUT_STRING.lines();
     let vec = split.collect::<Vec<&str>>();
-    let mut current_largest: i32 = 0;
+    let mut the_largest_1: i32 = 0;
+    let mut the_largest_2: i32 = 0;
+    let mut the_largest_3: i32 = 0;
     let mut counter : i32 = 0;
     for x in vec.iter() {
         if x == &"" {
-            println!("current_largest before: {} and counter : {}", current_largest, counter);
-            if current_largest < counter {
-                current_largest = counter;
+            if the_largest_1 < counter {
+                the_largest_3 = the_largest_2;
+                the_largest_2 = the_largest_1;
+                the_largest_1 = counter;
+            } else if the_largest_2 < counter {
+                the_largest_3 = the_largest_2;
+                the_largest_2 = counter;
+            } else if the_largest_3 < counter {
+                the_largest_3 = counter;
             }
             counter = 0;
-            println!("new current_largest: {} and counter : {}", current_largest, counter);
         } else {
             let x_int = x.parse::<i32>().unwrap();
             println!("current x: {}", x_int.to_string());
             counter = counter + x_int;
         }
-        // println!("In position {} we have value {}", i, x);
     }
-    println!("Largest value is {}", current_largest);
-    return current_largest;
+    let sum_of_top_3: i32 = the_largest_1 + the_largest_2 + the_largest_3;
+    println!("sum_of_top_3 is {}", sum_of_top_3);
+    return sum_of_top_3
 }
 
 
@@ -2293,5 +2299,5 @@ const INPUT_STRING: &str = "9195
 6034
 2895
 3881
-2464";
-
+2464
+";
