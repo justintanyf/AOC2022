@@ -1,10 +1,26 @@
-use std::env;
-
-pub fn calorie_counting() {
+pub fn calorie_counting() -> i32 {
     println!("FUCK YES");
-
-    let args: Vec<String> = INPUT_STRING.collect();
-    dbg!(args);
+    let split = INPUT_STRING.lines();
+    let vec = split.collect::<Vec<&str>>();
+    let mut current_largest: i32 = 0;
+    let mut counter : i32 = 0;
+    for x in vec.iter() {
+        if x == &"" {
+            println!("current_largest before: {} and counter : {}", current_largest, counter);
+            if current_largest < counter {
+                current_largest = counter;
+            }
+            counter = 0;
+            println!("new current_largest: {} and counter : {}", current_largest, counter);
+        } else {
+            let x_int = x.parse::<i32>().unwrap();
+            println!("current x: {}", x_int.to_string());
+            counter = counter + x_int;
+        }
+        // println!("In position {} we have value {}", i, x);
+    }
+    println!("Largest value is {}", current_largest);
+    return current_largest;
 }
 
 
